@@ -17,17 +17,22 @@ const login = async (req, res)=>{
         process.env.JWT_SECRET_KEY, 
         {expiresIn: '1h'}
         );
-    res.status(200).json({'token':token})
+    res.status(200).json({
+        'status':"success", 
+        'user': user, 
+        'token':token
+    })
 }
 
 const signup = async (req, res)=>{
-    const {name, email, password} = req.body;
+    const {name, email, password, role} = req.body;
     try{
         const user = new User();
         user.name = name;
         user.email = email;
         user.password = await bcrypt.hash(password, 10);
-
+        user.role = role;
+        
         await user.save();
         res.json(user)
     }catch(err){
