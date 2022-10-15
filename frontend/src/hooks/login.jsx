@@ -8,7 +8,11 @@ export const login = async (user) => {
     }
     console.log(user.email, user.password);
     await axios.post("http://localhost:3001/auth/login", data).then(response => {
-      console.log(response.data.token);
+      console.log(response.data);
       localStorage.setItem("token", response.data.token);
-    }).catch((err) => { alert(err) });
+      localStorage.setItem('status', response.data.status);
+      localStorage.setItem('id', response.data.user._id);
+      localStorage.setItem('name', response.data.user.name);
+      localStorage.setItem('role', response.data.user.role);
+    }).catch((err) => { alert(err) });  
 };
