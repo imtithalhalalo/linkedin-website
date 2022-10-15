@@ -11,6 +11,12 @@ app.use(cors());
 const authRoutes = require('./routes/auth.route');
 app.use('/auth', authRoutes)
 
+const userRoutes = require('./routes/user.route');
+app.use('/user', userRoutes);
+
+const companyRoutes = require('./routes/company.route');
+app.use('/companies', companyRoutes);
+
 app.listen(process.env.PORT, (err)=>{
     if(err) throw err;
     console.log(`server running on port ${process.env.PORT}`);
