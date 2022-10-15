@@ -1,11 +1,13 @@
 import React from 'react'
 import { login } from "../hooks/login";
+import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({onLogin}) => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         if (!email || !password) {
             alert("Fill All Fields");
@@ -15,11 +17,22 @@ const Login = () => {
             email: email,
             password: password
         }
-        login(user)
+        await login(user);
+        
+        if (localStorage.getItem('status') === 'success') {
+            if(localStorage.getItem('role') === 'company'){
+                navigate('/company');
+            }else if (localStorage.getItem('role') === 'user'){
+                navigate('/user');
+            }else {
+                navigate('/login');
+            }
+            onLogin(localStorage.getItem('role'));
+        }
 
         setEmail("");
         setPassword("");
-    };
+    }
     return (
         <>
             <div className="bg-white flex flex-col justify-center items-center">
