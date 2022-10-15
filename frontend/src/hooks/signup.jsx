@@ -6,9 +6,10 @@ export const signup = async (user) => {
     const data = {
       name: name,
       email: user.email,
-      password: user.password
+      password: user.password,
+      role: user.role
     }
-    console.log(name, user.email, user.password);
+    console.log(name, user.email, user.password, user.role);
     await axios.post("http://localhost:3001/auth/signup", data).then(response => {
       return response.data;
     }).catch((err) => { alert(err) });
