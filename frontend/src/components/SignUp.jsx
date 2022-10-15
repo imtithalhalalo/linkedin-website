@@ -4,6 +4,17 @@ import { signup } from '../hooks/signup';
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [role, setRole] = useState('');
+    const [iscompany, setIsCompany] = useState(false);
+    const handleChange = event => {
+        if (event.target.checked) {
+          setRole('company');
+        } else {
+          setRole('user');
+        }
+        setIsCompany(current => !current);
+      };
     const onSubmit = (e) => {
         e.preventDefault();
         if (!email || !password) {
@@ -12,10 +23,11 @@ const SignUp = () => {
         }
         const user = {
             email: email,
-            password: password
+            password: password,
+            role: role
         }
         signup(user);
-
+        localStorage.setItem('role', role);
         setEmail("");
         setPassword("");
     };
@@ -30,11 +42,16 @@ const SignUp = () => {
                     <form className="space-y-3 mt-2" onSubmit={onSubmit}>
                         <label className='text-gray-800'>Email</label>
                         <input type="text" className="w-full h-10 border border-gray-800 rounded px-3" placeholder="Email" value={email}
-                        onChange={(e) => setEmail(e.target.value)}/>
+                            onChange={(e) => setEmail(e.target.value)} />
                         <label className='text-gray-800'>Password (6 or more characters)</label>
                         <input type="password" className="w-full h-10 border border-gray-800 rounded px-3" placeholder="Password" value={password}
-                        onChange={(e) => setPassword(e.target.value)}/>
+                            onChange={(e) => setPassword(e.target.value)} />
+
                         <p className='text-gray-400 text-xs text-center'>By clicking Agree & Join, you agree to the LinkedIn User Agreement, Privacy Policy, and Cookie Policy.</p>
+                        <div className="flex items-center mr-4">
+                            <input id="checkbox" type="checkbox" value={iscompany} onChange={handleChange} className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label htmlFor="checkbox" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">As Company? </label>
+                        </div>
                         <button className="text-center rounded-full w-full bg-blue text-white py-3 font-medium">Agree & Join</button>
                     </form>
                 </div>
