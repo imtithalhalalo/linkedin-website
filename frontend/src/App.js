@@ -6,6 +6,7 @@ import UserProfile from "./components/UserPage/UserProfile";
 import CreatePost from "./components/CompanyPage/CreatePost";
 import NavUser from "./components/NavUser";
 import Jobs from "./components/UserPage/Jobs"
+import JobsSearched from "./components/UserPage/JobsSearched";
 function App() {
   const [path, setPath] = useState('./login');
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/user' element={<><NavUser/> <UserProfile /></>} />
 				<Route path='/company' element={<CreatePost />} />
         <Route path='/jobs' element={<><NavUser/><Jobs /></>} />
+        <Route path='/search' element={<><NavUser/><JobsSearched /></>} />
       </Routes>
     </BrowserRouter>
   );
