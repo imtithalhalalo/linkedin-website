@@ -18,7 +18,17 @@ const getProfiles = async (req, res) => {
     .catch((err)=>res.status(400).send(err)) 
 }
 
+const getJobs = async (req, res) => {
+    const {company_id} = req.body;
+    Job.find({company_id: company_id}).then(
+        (job) => {
+            res.status(200).json({ "message": "All Jobs", "job": job })
+        }
+    )
+        .catch((err) => res.status(400).send(err))
+}
 module.exports = {
     createJobPost,
-    getProfiles
+    getProfiles,
+    getJobs
 }
