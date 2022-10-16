@@ -14,6 +14,7 @@ const CreatePost = () => {
         }
 
         const company_name = localStorage.getItem('name');
+        const company_id = localStorage.getItem('id');
         setTitle("");
         setDesc("");
         setPurpose("");
@@ -21,7 +22,8 @@ const CreatePost = () => {
             title: title,
             desc: desc,
             purpose: purpose,
-            company_name: company_name
+            company_name: company_name,
+            company_id: company_id
         }
         console.log(data)
         try {
