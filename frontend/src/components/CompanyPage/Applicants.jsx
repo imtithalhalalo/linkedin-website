@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+
+const Applicants = () => {
+    const [applicants, setApplicants] = useState([]);
+    const job_id = localStorage.getItem('job_id');
+    const data = {
+        job_id: job_id
+    }
+    const getApplicants = async () => {
+        try {
+            await axios.post(`http://localhost:3001/companies/applicants`, data,
+                { headers: { 'Authorization': `Bearer ${localStorage.getItem(`token`)}` } })
+                .then(response => {
+                    setApplicants(response.data.applicant)
+                });
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
+    useEffect(() => {
+        getApplicants()
+    }, [])
+    return (
+
+        <>
+            <div className="bg-grey">
+                <div className="flex flex-col justify-center items-center">
+                    <div className="h-24 bg-blue w-2/4">
+                        <h1 className="text-white text-4xl text-center pt-5"> Applicants </h1>
+                    </div>
+                    {applicants.map((applicant, index) => (
+                        <div className="bg-white h-48 w-2/4 border p-5" key={index}>
+                            <div className="flex flex-col" key={index}>
+                                <a className="text-lg text-blue-600">{applicant.user.name}</a>
+                                <h6 className="text-md text-black">{applicant.email}</h6>
+                                <h6 className="text-sm text-gray-500">{applicant.user.education}</h6>
+                                <h6 className="text-sm text-gray-500">{applicant.user.location}</h6>
+                            </div>
+                        </div>
+                        
+                    ))}
+                </div>
+            </div>
+
+
+        </>
+
+
+
+    )
+}
+
+export default Applicants
