@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import ApplyModal from '../ApplyModal';
+import Button from '../Button';
 
 const JobsSearched = () => {
     const [searchedjobs, setSearchedJobs] = useState([]);
+    const id = localStorage.getItem('id');
+    const [jobId, setJobID] = useState('');
+    const [showModal, setShow] = useState(false);
     const key = localStorage.getItem('key');
     const getJobsSearched = async () => {
         try {
@@ -29,15 +34,15 @@ const JobsSearched = () => {
                     {searchedjobs.map(job => (
                         <div className="bg-white h-48 w-2/4 border p-5">
                             <div className="flex flex-col">
-                                <a className="text-lg text-blue-600">{job.title}</a>
+                                <a href="/fulljob" className="text-lg text-blue-600">{job.title}</a>
                                 <h6 className="text-md text-black">{job.company_name}</h6>
                                 <h6 className="text-sm text-gray-500">{job.desc}</h6>
                             </div>
-                            <button className="text-center rounded-full w-48 bg-blue text-white py-3 font-medium mt-5">Easy Apply </button>
+                            <Button onClick={() => {setShow(true); setJobID(job._id); console.log(job._id)}} text={"Easy Apply"}/>
                         </div>
                     ))}
 
-
+                    <ApplyModal onClose={() => setShow(false)} show={showModal} job_id={jobId} user_id={id}/>
                 </div>
             </div>
 
