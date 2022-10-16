@@ -26,8 +26,21 @@ const getJobs = async (req, res) => {
     .catch((err)=>res.status(400).send(err)) 
 
 }
+const search = async (req, res) => {
+    const data = await Job.find({
+        "$or": [
+            {title : {$regex:req.params.key}}
+        ]
+    }).then(
+        (job) => {
+            res.status(200).json({"message" : "Searched Jobs", "job":job})
+        }
+    )
+    .catch((err)=>res.status(400).send(err))
+}
 module.exports = {
     editProfile,
     getUser,
-    getJobs
+    getJobs,
+    search
 }
