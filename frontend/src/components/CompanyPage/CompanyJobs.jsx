@@ -12,7 +12,7 @@ const CompanyJobs = () => {
         }
         try {
             await axios.post(`http://localhost:3001/companies/jobs`, data,
-                { headers: { 'Authorization': `Bearer ${localStorage.getItem(`token`)}` } })
+                { headers: { 'authorization': `Bearer ${localStorage.getItem(`token`)}` } })
                 .then(response => {
                     setJobs(response.data.job)
                 });
@@ -35,7 +35,7 @@ const CompanyJobs = () => {
                     {jobs.map((job, index) => (
                         <div className="bg-white h-52 w-2/4 border p-5" key={index}>
                             <div className="flex flex-col">
-                                <a className="text-lg text-blue-600">{job.title}</a>
+                                <a href="/fulljob" className="text-lg text-blue-600">{job.title}</a>
                                 <h6 className="text-md text-black">{job.purpose}</h6>
                                 <h6 className="text-sm text-gray-500">{job.desc}</h6>
                             </div>

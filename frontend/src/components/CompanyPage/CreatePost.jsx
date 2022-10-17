@@ -28,7 +28,7 @@ const CreatePost = () => {
         console.log(data)
         try {
             await axios.post("http://localhost:3001/companies", data,
-                { headers: { 'Authorization': `Bearer ${localStorage.getItem(`token`)}` } }).then(response => {
+                { headers: { 'authorization': `Bearer ${localStorage.getItem(`token`)}` } }).then(response => {
                     alert(response.data.message)
                 });
 

@@ -12,7 +12,7 @@ const JobsSearched = () => {
     const getJobsSearched = async () => {
         try {
             await axios.get(`http://localhost:3001/user/search/${key}`,
-                { headers: { 'Authorization': `Bearer ${localStorage.getItem(`token`)}` } })
+                { headers: { 'authorization': `Bearer ${localStorage.getItem(`token`)}` } })
                 .then(response => {
                     setSearchedJobs(response.data.job)
                 });

@@ -10,7 +10,7 @@ export const edit = async (user) => {
         experience: user.experience
     }
     
-    await axios.put(`http://localhost:3001/user/`, data, { headers: { 'Authorization': `Bearer ${localStorage.getItem(`token`)}` } }).then(response => {
+    await axios.put(`http://localhost:3001/user/`, data, { headers: { 'authorization': `Bearer ${localStorage.getItem(`token`)}` } }).then(response => {
      console.log('editted');
     }).catch((err) => { alert(err) });  
 };

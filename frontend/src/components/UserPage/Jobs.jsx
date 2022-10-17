@@ -11,7 +11,7 @@ const Jobs = () => {
     const getJobs = async () => {
         try {
             await axios.get(`http://localhost:3001/user/jobs`,
-                { headers: { 'Authorization': `Bearer ${localStorage.getItem(`token`)}` } })
+                { headers: { 'authorization': `Bearer ${localStorage.getItem(`token`)}` } })
                 .then(response => {
                     setJobs(response.data.job)
                 });
