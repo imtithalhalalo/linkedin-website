@@ -1,3 +1,5 @@
+import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react'
 import { edit } from '../hooks/edit';
 const EditProfileModal = (props) => {
@@ -30,7 +32,7 @@ const EditProfileModal = (props) => {
         <div className="modal" >
             <div className="modal_content p-5" onClick={e => e.stopPropagation}>
                 <div className="modal_header">
-                    <h1 className='text-2xl font-medium mb-3'>Edit Intro</h1>
+                    <h1 className='text-2xl font-medium mb-3'>Edit Intro <FontAwesomeIcon icon={faPen} /></h1>
                     <button onClick={props.onClose} className="text-xl">X</button>
                 </div>
                 <form className="space-y-3 mt-2" onSubmit={ onSubmit }>
