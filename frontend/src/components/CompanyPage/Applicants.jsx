@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import Button from '../Button';
+import { useNavigate } from 'react-router-dom';
 
 const Applicants = () => {
     const [applicants, setApplicants] = useState([]);
     const job_id = localStorage.getItem('job_id');
+    const navigate = useNavigate();
     const data = {
         job_id: job_id
     }
     const getApplicants = async () => {
         try {
             await axios.post(`http://localhost:3001/companies/applicants`, data,
-                { headers: { 'Authorization': `Bearer ${localStorage.getItem(`token`)}` } })
+                { headers: { 'authorization': `Bearer ${localStorage.getItem(`token`)}` } })
                 .then(response => {
                     setApplicants(response.data.applicant)
                 });
@@ -38,9 +41,15 @@ const Applicants = () => {
                                 <h6 className="text-sm text-gray-500">{applicant.user.education}</h6>
                                 <h6 className="text-sm text-gray-500">{applicant.user.location}</h6>
                             </div>
+                            <Button onClick={() => {
+                                navigate('/applicant');
+                                localStorage.setItem('applicant_id', applicant.user._id)
+                                console.log(applicant.user._id)
+                                }} text={"Review Applicant"} />
                         </div>
                         
                     ))}
+                    
                 </div>
             </div>
 
