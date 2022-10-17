@@ -10,6 +10,7 @@ import JobsSearched from "./components/UserPage/JobsSearched";
 import NavCompany from "./components/NavCompany";
 import CompanyJobs from "./components/CompanyPage/CompanyJobs";
 import Applicants from "./components/CompanyPage/Applicants";
+import ApplicantProfile from "./components/CompanyPage/ApplicantProfile";
 function App() {
   const [path, setPath] = useState('./login');
 
@@ -41,6 +42,7 @@ function App() {
         <Route path='/applicants' element={<><NavCompany/><Applicants /></>} />
         <Route path='/jobs' element={<><NavUser/><Jobs /></>} />
         <Route path='/search' element={<><NavUser/><JobsSearched /></>} />
+        <Route path='/applicant' element={<><NavCompany/><ApplicantProfile /></>} />
       </Routes>
     </BrowserRouter>
   );
