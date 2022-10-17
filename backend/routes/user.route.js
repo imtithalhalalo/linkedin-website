@@ -1,12 +1,13 @@
 const {Router} = require('express');
-const {editProfile, getUser, getJobs, search, apply, followCompany} = require('../controllers/user.controller')
+const {editProfile, getUser, getJobs, search, apply, followCompany} = require('../controllers/user.controller');
+const authMiddleware = require('../middlewares/auth.middleware');
 const router = Router();
 
-router.put('/', editProfile);
-router.get('/getuser/:id', getUser);
-router.get('/jobs', getJobs);
-router.get('/search/:key', search);
-router.post('/apply', apply);
-router.post('/follow', followCompany);
+router.put('/', authMiddleware, editProfile);
+router.get('/getuser/:id', authMiddleware, getUser);
+router.get('/jobs', authMiddleware, getJobs);
+router.get('/search/:key', authMiddleware, search);
+router.post('/apply', authMiddleware, apply);
+router.post('/follow', authMiddleware, followCompany);
 
 module.exports = router;
