@@ -1,6 +1,7 @@
 const Job = require('../models/jobs.model');
 const User = require('../models/users.model');
 const Applicant = require('../models/applicants.model');
+const Follow = require('../models/follows.model');
 
 const editProfile = async (req, res) => {
     const { id, ...data } = req.body;
@@ -52,10 +53,22 @@ const apply = async (req, res) => {
 
 }
 
+const followCompany = async (req, res) => {
+    await Follow.create(req.body)
+    .then(
+        (follow) => {
+            res.status(200).json({
+                'message': "success",
+                'follow': follow
+            })
+        }
+    ).catch((err) => res.status(400).send(err))
+}
 module.exports = {
     editProfile,
     getUser,
     getJobs,
     search,
-    apply
+    apply,
+    followCompany
 }
