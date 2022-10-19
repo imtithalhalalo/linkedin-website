@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 const ApplicantProfile = () => {
     const [user, setUser] = useState([]);
@@ -17,11 +17,11 @@ const ApplicantProfile = () => {
 
     useEffect(() => {
         getUser()
-    }, [])
+    })
     return (
 
         <>
-            {/* <Menu/> */}
+
             <div className='bg-grey'>
                 <div className='pt-12'>
                     <div className="h-screen ml-24 bg-white w-3/5 rounded p-5 border border-solid">

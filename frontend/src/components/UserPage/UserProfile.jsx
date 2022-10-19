@@ -23,7 +23,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     getUser()
-  }, [])
+  })
   console.log(user)
   return (
 
