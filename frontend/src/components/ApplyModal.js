@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { apply } from '../hooks/apply';
+import Input from './Input';
 const ApplyModal = (props) => {
     const [email, setEmail] = useState('');
     const [phonenum, setPhoneNum] = useState('');
@@ -28,10 +29,8 @@ const ApplyModal = (props) => {
                     <button onClick={props.onClose} className="text-xl">X</button>
                 </div>
                 <form className="space-y-3 mt-2" onSubmit={onSubmit}>
-                    <label className='text-gray-800'>Email</label>
-                    <input type="text" className="w-full h-10 border border-gray-800 rounded px-3" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <label className='text-gray-800'>Phone Number</label>
-                    <input type="text" className="w-full h-10 border border-gray-800 rounded px-3" placeholder="Phone Number" value={phonenum} onChange={(e) => setPhoneNum(e.target.value)} />
+                    <Input text={"Email"} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <Input text={"Phone Number"} value={phonenum} onChange={(e) => setPhoneNum(e.target.value)}/>
                     <button className="mt-1 text-center rounded-full w-40 bg-blue text-white py-3 font-medium">Apply</button>
                 </form>
             </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from "react";
 import { signup } from '../hooks/signup';
+import Input from './Input';
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -40,12 +41,8 @@ const SignUp = () => {
                 <h1 className='text-4xl text-center'>Make the most of your professional life</h1>
                 <div className="bg-white w-96 rounded p-5 h-5/6">
                     <form className="space-y-3 mt-2" onSubmit={onSubmit}>
-                        <label className='text-gray-800'>Email</label>
-                        <input type="text" className="w-full h-10 border border-gray-800 rounded px-3" placeholder="Email" value={email}
-                            onChange={(e) => setEmail(e.target.value)} />
-                        <label className='text-gray-800'>Password (6 or more characters)</label>
-                        <input type="password" className="w-full h-10 border border-gray-800 rounded px-3" placeholder="Password" value={password}
-                            onChange={(e) => setPassword(e.target.value)} />
+                        <Input text={"Email"} value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <Input text={"Password"} value={password} onChange={(e) => setPassword(e.target.value)}/>
 
                         <p className='text-gray-400 text-xs text-center'>By clicking Agree & Join, you agree to the LinkedIn User Agreement, Privacy Policy, and Cookie Policy.</p>
                         <div className="flex items-center mr-4">
