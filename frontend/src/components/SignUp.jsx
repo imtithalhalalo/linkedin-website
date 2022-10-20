@@ -6,7 +6,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [role, setRole] = useState('');
+    const [role, setRole] = useState('user');
     const [iscompany, setIsCompany] = useState(false);
     const handleChange = event => {
         if (event.target.checked) {
