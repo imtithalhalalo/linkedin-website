@@ -1,15 +1,11 @@
 const User = require('../models/users.model');
 const Job = require('../models/jobs.model');
 const Applicant = require('../models/applicants.model');
-const notifier = require('node-notifier');
+
 const createJobPost = async (req, res)=>{
     Job.create(req.body)
     .then((job)=> {
         res.status(200).json({"message" : "created", "job":job})
-        notifier.notify({
-            title: 'New Job',
-            message: 'Check new job added!'
-        });
     })
     .catch((err)=>res.status(400).send(err)) 
 }
