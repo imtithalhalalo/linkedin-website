@@ -64,11 +64,23 @@ const followCompany = async (req, res) => {
         }
     ).catch((err) => res.status(400).send(err))
 }
+
+const unFollowCompany = async (req, res) => {
+    await Follow.deleteOne(req.body)
+    .then(
+        () => {
+            res.status(200).json({
+                'message': "success"
+            })
+        }
+    ).catch((err) => res.status(400).send(err))
+}
 module.exports = {
     editProfile,
     getUser,
     getJobs,
     search,
     apply,
-    followCompany
+    followCompany,
+    unFollowCompany
 }
