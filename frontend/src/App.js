@@ -11,6 +11,9 @@ import NavCompany from "./components/NavCompany";
 import CompanyJobs from "./components/CompanyPage/CompanyJobs";
 import Applicants from "./components/CompanyPage/Applicants";
 import ApplicantProfile from "./components/CompanyPage/ApplicantProfile";
+import FollowBox from "./components/FollowBox";
+import AllCompanies from "./components/UserPage/AllCompanies";
+import CompanyProfile from "./components/CompanyPage/CompanyProfile";
 function App() {
   const [path, setPath] = useState('./login');
 
@@ -43,6 +46,8 @@ function App() {
         <Route path='/jobs' element={<><NavUser/><Jobs /></>} />
         <Route path='/search' element={<><NavUser/><JobsSearched /></>} />
         <Route path='/applicant' element={<><NavCompany/><ApplicantProfile /></>} />
+        <Route path='/companies' element={<><NavUser/><AllCompanies /></>} />
+        <Route path="/companyprofile" element={<><NavCompany/> <CompanyProfile/></>}/>
       </Routes>
     </BrowserRouter>
   );
