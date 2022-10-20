@@ -39,11 +39,10 @@ const CreatePost = () => {
     };
     return (
         <>
-            {/* <Menu/> */}
             <div className='bg-grey '>
                 <div className='pt-12 '>
                     <div className="h-screen ml-24 bg-white w-3/5 rounded p-5 border border-solid">
-                        <img className="w-36 h-36 my-1 border-4 bg-blue border-white rounded-full z-2" src={process.env.PUBLIC_URL + "images/linkedin-logo.png"} alt="cover" />
+                        <img className="w-36 h-36 my-1 border-4 border-white rounded-full z-2" src={process.env.PUBLIC_URL + "images/default.svg"} alt="cover" />
                         <form className="space-y-5 mt-5" onSubmit={onSubmit}>
                             <input type="text" className="w-full h-12 border border-gray-800 rounded px-3" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
                             <textarea type="text" className="w-full h-24 border border-gray-800 rounded px-3" placeholder="Job Purpose" value={purpose} onChange={(e) => setPurpose(e.target.value)}/>
