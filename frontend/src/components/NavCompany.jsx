@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { faHome, faBriefcase } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faBriefcase, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const NavCompany = () => {
   return (
@@ -16,6 +16,10 @@ const NavCompany = () => {
             <div className="flex flex-col pl-5">
                 <FontAwesomeIcon icon={faBriefcase} />
                 <Link to="/companyjobs">Jobs</Link>
+            </div>
+            <div className="flex flex-col pl-5">
+                <FontAwesomeIcon icon={faUser} />
+                <Link to="/companyprofile">Profile</Link>
             </div>
         </div>
     </div>
