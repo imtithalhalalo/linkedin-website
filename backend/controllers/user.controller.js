@@ -2,7 +2,7 @@ const Job = require('../models/jobs.model');
 const User = require('../models/users.model');
 const Applicant = require('../models/applicants.model');
 const Follow = require('../models/follows.model');
-
+const fs = require('fs')
 const editProfile = async (req, res) => {
     const { id, ...data } = req.body;
     User.findByIdAndUpdate(id, data).then(
@@ -75,6 +75,30 @@ const unFollowCompany = async (req, res) => {
         }
     ).catch((err) => res.status(400).send(err))
 }
+
+const updateProfileImage = async (req, res) => {
+    try{
+        const { id } = req.body;
+        let imagebase64 = req.body.image;
+        let buff = Buffer.from(imagebase64, 'base64');
+        const url = '../frontend/uploads/' + id + '.jpg';
+        fs.writeFileSync('../frontend/uploads/' + id + '.jpg', buff);
+        User.findByIdAndUpdate(id, { image: url }).then(
+            (user) => {
+                res.status(200).json({ "message": "updated", "user": user })
+            }
+        )
+        .catch((err) => res.status(400).send(err.message))
+        
+        res.status(200).json({
+            'message': "uploaded"
+        })
+    }catch (err) {
+        res.status(400).send(err.message)
+    }
+
+    
+}
 module.exports = {
     editProfile,
     getUser,
@@ -82,5 +106,6 @@ module.exports = {
     search,
     apply,
     followCompany,
-    unFollowCompany
+    unFollowCompany,
+    updateProfileImage
 }
