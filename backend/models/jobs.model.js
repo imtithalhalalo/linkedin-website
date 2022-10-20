@@ -4,11 +4,11 @@ const User = require('./users.model');
 const jobSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: "title is required"
     },
     desc: {
         type: String,
-        required: true
+        required: "description is required"
     },
     purpose: String,
     company_name: String,
