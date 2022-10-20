@@ -40,7 +40,7 @@ const AllCompanies = () => {
             <div className='bg-grey '>
                 <div className="flex flex-col justify-center items-center">
                     <div className="h-24 bg-blue w-2/4">
-                        <h1 className="text-white text-4xl text-center pt-5"> Jobs </h1>
+                        <h1 className="text-white text-4xl text-center pt-5"> All Companies </h1>
                     </div>
                     <div className="bg-white h-48 w-2/4 border p-5">
                         {companies.map((company, index) => (
