@@ -17,7 +17,7 @@ const ApplicantProfile = () => {
 
     useEffect(() => {
         getUser()
-    })
+    }, [])
     return (
 
         <>
